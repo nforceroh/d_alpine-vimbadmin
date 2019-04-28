@@ -1,0 +1,8 @@
+#!/bin/sh
+exec 2>&1 # pipe stderr to stdout
+mkdir -p /var/log/nginx
+chown nginx:nginx /var/log/nginx
+echo "STARTED SERVICE: nginx-service"
+## Add your service task command below
+## Call your service with exec command
+exec nginx -c /etc/nginx/nginx.conf -g 'daemon off;'

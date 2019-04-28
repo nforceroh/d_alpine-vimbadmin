@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+
+cp ${INSTALL_PATH}/public/.htaccess.dist ${INSTALL_PATH}/public/.htaccess
+
+echo "vimbadmin environment variable substitution"
+sed \
+-e "s/^resources.doctrine2.connection.options.dbname.*/resources.doctrine2.connection.options.dbname = '${VIMBADMIN_DB_NAME}'/" \
+-e "s/^resources.doctrine2.connection.options.user.*/resources.doctrine2.connection.options.user = '${VIMBADMIN_DB_USER}'/" \
+-e "s/^resources.doctrine2.connection.options.password.*/resources.doctrine2.connection.options.password = '${VIMBADMIN_DB_PASSWORD}'/" \
+-e "s/^resources.doctrine2.connection.options.host.*/resources.doctrine2.connection.options.host = '${VIMBADMIN_DB_HOST}'/" \
+-e "s/^server.email.address.*/server.email.address = '${ADMIN_EMAIL}'/" \
+-e "s/^resources.mail.transport.host.*/resources.mail.transport.host = '${SMTP_HOST}'/" \
+    ${INSTALL_PATH}/application/configs/application.ini.dist > ${INSTALL_PATH}/application/configs/application.ini 

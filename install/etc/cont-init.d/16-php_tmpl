@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+echo "Configure php.ini"
+sed -i \
+    -e "s/^expose_php.*/expose_php = Off/" \
+    -e "s/^;date.timezone.*/date.timezone = UTC/" \
+    -e "s/^memory_limit.*/memory_limit = -1/" \
+    -e "s/^max_execution_time.*/max_execution_time = 600/" \
+    -e "s/^post_max_size.*/post_max_size = 2048M/" \
+    -e "s/^upload_max_filesize.*/upload_max_filesize = 2048M/" \
+    -e "s/^;always_populate_raw_post_data.*/always_populate_raw_post_data = -1/" \
+    /etc/php5/php.ini
