@@ -2,4 +2,4 @@
 
 mkdir -p /var/log/php
 chown -R www-data:www-data /var/log/php
-exec php-fpm5 -R -c /etc/php5/php-fpm.conf
+exec php-fpm7 -R -c /etc/php7/php-fpm.conf
