@@ -3,8 +3,8 @@
 SHELL := /bin/bash
 IMG_NAME := d_alpine-vimbadmin
 IMG_REPO := nforceroh
-VERSION := $(shell date +"v%Y%m%d" )
-DATE_VERSION := $(shell date +"v%Y%m%d" )
+VERSION := $(shell date +"v%Y%m%d%H%M" )
+DATE_VERSION := $(VERSION)
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 
 ifeq ($(BRANCH),dev)
@@ -16,7 +16,7 @@ endif
 
 .PHONY: context all build push gitcommit gitpush
 all: context build push 
-git: context gitcommit gitpush
+git: context gitcommit gitrelease
 
 context: 
 	@echo "Switching docker context to default"
@@ -35,9 +35,9 @@ endif
 gitcommit:
 	git push
 
-gitpush:
-	@echo "Building $(IMG_NAME):$(VERSION) image"
-	-git tag -a $(VERSION) -m "Update to $(VERSION)"
+gitrelease:
+	@echo "Creating git release $(DATE_VERSION)"
+	-git tag -a $(DATE_VERSION) -m "releasing $(DATE_VERSION)"
 	git push --tags
 
 push: 
