@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv bash
 
 mkdir -p /var/log/php
-chown -R www-data:www-data /var/log/php
-exec php-fpm5 -R -c /etc/php5/php-fpm.conf
+chown -R nginx:nginx /var/log/php
+exec php-fpm7 -R -c /etc/php7/php-fpm.conf

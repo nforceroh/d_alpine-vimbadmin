@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+echo "Setting ownership of ${INSTALL_PATH} to nginx:nginx"
+chown -R nginx:nginx ${INSTALL_PATH}
+#chown -R nobody:nobody ${INSTALL_PATH}/application/var

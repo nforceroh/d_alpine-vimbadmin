@@ -1,6 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-echo "Creating www-data user"
-/usr/sbin/addgroup -g 82 -S www-data 
-/usr/sbin/adduser -u 82 -D -S -G www-data www-data
-chown -R www-data:www-data ${INSTALL_PATH}/var
